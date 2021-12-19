@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	{% include 'shared/_navbar.html.twig' %}
+	<div class="container mt-5">
+		<h1>S'enregistrer</h1>
+		<div class="alert">
+			{% include 'shared/_messages_flash.html.twig' %}
+
+		</div>
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.email) }}
+		{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+
+		<button type="submit" class="btn btn-primary">Creer son compte</button>
+		{{ form_end(registrationForm) }}
+	</div>
+	{% include 'shared/_footer.html.twig' %}
+{% endblock %}
