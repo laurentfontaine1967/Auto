@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonces
+{% endblock %}
+
+{% block body %}
+
+	{% include 'shared/_navbar.html.twig' %}
+	<div class="container mt-2">
+		<h1 style="font-size:25px" class="pt-3">Creer un produit</h1>
+
+		{{ include('annonces/_form.html.twig') }}
+
+		<a class="btn btn-primary mt-3" href="{{ path('annonces_index') }}">retour à la liste</a>
+	</div>
+	{% include 'shared/_footer.html.twig' %}
+{% endblock %}

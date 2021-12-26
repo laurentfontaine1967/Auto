@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+{{ form_widget(form) }}
+
+{% if app.request.get('_route') == 'annonces_edit'%}
+	<h2 style="font-size:15px">Images</h2>
+	{% for image in annonce.images %}
+		<div>
+			<img src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="150">
+			<a class="btn btn-danger btn-sm" href="{{ path('annonces_delete_image',{ id: image.id}) }}">Supprimer</a>
+		</div>
+
+
+	{% endfor %}
+{% endif %}
+{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+<button class="btn btn-primary mt-4">Enregistrer</button>
+{{ form_end(form) }}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces index
+{% endblock %}
+
+{% block body %}
+	{% include 'shared/_navbar.html.twig' %}
+	<div class="container mt-5">
+		<h1 style="font-size:25px" class="pt-3">Liste de nos Produits</h1>
+		<table class="table mt-4">
+			<thead>
+				<tr>
+
+					<th>Titre</th>
+					<th>description</th>
+					<th>Prix ( en Euros)</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for annonce in annonces %}
+					<tr>
+
+						<td>{{ annonce.title }}</td>
+						<td>{{ annonce.content }}</td>
+						<td>{{ annonce.price }}</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path('annonces_show', {'id': annonce.id}) }}">Voir plus</a>
+							{% if app.user %}
+								{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+									<a class="btn btn-warning" href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
+								{% endif %}
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Pas de produits enregistrés</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% if app.user %}
+			{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+				<a class="btn btn-primary" href="{{ path('annonces_new') }}">ajouter un produit</a>
+			{% endif %}
+		{% endif %}
+	</div>
+	{% include 'shared/_footer.html.twig' %}
+{% endblock %}
