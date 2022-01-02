@@ -5,12 +5,10 @@
 {% endblock %}
 
 {% block body %}
-	{% include 'shared/_navbar.html.twig' %}
-	<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
-	<body>
-		<div class="container mt-3">
+
+	<body style="background-color:grey;height:90vh">
+		<div class="container mt-3" style="height:90%;background-color:green">
 			<div class="row">
 				<div class="col-md-6">
 
@@ -39,5 +37,5 @@
 
 
 	</body>
-	{% include 'shared/_footer.html.twig' %}
+
 {% endblock %}

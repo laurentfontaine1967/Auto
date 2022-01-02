@@ -39,6 +39,11 @@ class Annonces
      */
     private $price;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $descriptionsimple;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -111,6 +116,18 @@ class Annonces
     public function setPrice(string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getDescriptionSimple(): ?string
+    {
+        return $this->descriptionsimple;
+    }
+
+    public function setDescriptionSimple(string $descriptionsimple): self
+    {
+        $this->descriptionsimple = $descriptionsimple;
 
         return $this;
     }

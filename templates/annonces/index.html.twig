@@ -4,47 +4,59 @@
 {% endblock %}
 
 {% block body %}
-	{% include 'shared/_navbar.html.twig' %}
-	<div class="container mt-5">
-		<h1 style="font-size:25px" class="pt-3">Liste de nos Produits</h1>
-		<table class="table mt-4">
-			<thead>
-				<tr>
-
-					<th>Titre</th>
-					<th>description</th>
-					<th>Prix ( en Euros)</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for annonce in annonces %}
+	<body style="height:95vh">
+		<div class="container mt-1" style="height:90%">
+			<h1 style="font-size:25px" class="pt-3">Liste de nos Produits</h1>
+			{{ knp_pagination_render(annonces) }}
+			<table class="table mt-4">
+				<thead>
 					<tr>
 
-						<td>{{ annonce.title }}</td>
-						<td>{{ annonce.content }}</td>
-						<td>{{ annonce.price }}</td>
-						<td>
-							<a class="btn btn-primary" href="{{ path('annonces_show', {'id': annonce.id}) }}">Voir plus</a>
-							{% if app.user %}
-								{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-									<a class="btn btn-warning" href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
+						<th>Titre</th>
+						<th class="text-center">description sommaire</th>
+						<th class="text-center">photo
+						</th>
+						<th>Prix(€)</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for annonce in annonces %}
+						<tr>
+
+							<td class="align-middle">{{ annonce.title }}</td>
+							<td class="align-middle">{{ annonce.descriptionsimple }}</td>
+							{% for image in annonce.images %}
+
+								<td>
+									<img src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="100"></td>
+
+
+							{% endfor %}
+
+							<td class="align-middle">{{ annonce.price }}</td>
+							<td class="align-middle">
+								<a class="btn btn-primary btn-sm mx-2" href="{{ path('annonces_show', {'id': annonce.id}) }}">Détail</a>
+								{% if app.user %}
+									{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+										<a class=" btn btn-warning btn-sm " href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
+									{% endif %}
 								{% endif %}
-							{% endif %}
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="5">Pas de produits enregistrés</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% if app.user %}
-			{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-				<a class="btn btn-primary" href="{{ path('annonces_new') }}">ajouter un produit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Pas de produits enregistrés</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{{ knp_pagination_render(annonces) }}
+			{% if app.user %}
+				{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+					<a class="btn btn-primary mb-1" href="{{ path('annonces_new') }}">ajouter un produit</a>
+				{% endif %}
 			{% endif %}
-		{% endif %}
-	</div>
-	{% include 'shared/_footer.html.twig' %}
+		</div>
+	</body>
 {% endblock %}

@@ -19,6 +19,10 @@ class AnnoncesType extends AbstractType
                 'label' =>'Titre'
             ])
 
+            ->add('descriptionsimple', TextType::class,[
+                'label' =>'description sommaire'
+            ])
+
             ->add('content', CKEditorType::class, [
                 'label' => 'Description'
             ])
