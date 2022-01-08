@@ -28,7 +28,7 @@ class AnnoncesController extends AbstractController
         $annonces = $paginatorInterface->paginate(
             $data,
             $request->query->getInt('page', 1),
-            5
+            4
         );
 
 
