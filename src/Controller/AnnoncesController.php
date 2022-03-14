@@ -121,11 +121,11 @@ class AnnoncesController extends AbstractController
             return $this->redirectToRoute('annonces_index');
         }
 
-        $UserRole =$user->getRoles();
-        if($UserRole != "ROLE_ADMIN")
-        {
-            return $this->redirectToRoute('annonces_index');
-        }
+        // $UserRole =$user->getRoles();
+        // if($UserRole != "ROLE_ADMIN")
+        // {
+        //     return $this->redirectToRoute('annonces_index');
+        // }
    
 
         $form = $this->createForm(AnnoncesType::class, $annonce);

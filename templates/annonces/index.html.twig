@@ -4,8 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<body style="height:95vh">
-		<div class="container mt-1" style="height:90%">
+	<link rel="stylesheet" href="{{ asset('css/all.css') }}">
+	<body style="height:100vh">
+		<div class="container mt-1" style="height:100%">
 			<h1 style="font-size:25px" class="pt-3">Liste de nos Produits</h1>
 			{{ knp_pagination_render(annonces) }}
 			<table class="table mt-4">
