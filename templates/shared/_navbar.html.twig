@@ -23,11 +23,11 @@
 					<a class="nav-link" href="{{ path('annonces_index') }}">Nos produits</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('contact') }}">
-						Nous contacter
-					</a>
-				</li>
+				{# <li class="nav-item">
+									<a class="nav-link" href="{{ path('contact') }}">
+										Nous contacter
+									</a>
+								</li> #}
 				{% if app.user is same as null %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_login') }}">

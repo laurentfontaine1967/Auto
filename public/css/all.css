@@ -2,3 +2,14 @@
   height: 100wh;
   width: 100vw;
 } */
+.photo {
+  display:flex;
+  flex-wrap: wrap;
+  
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

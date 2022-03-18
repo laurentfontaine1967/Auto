@@ -6,6 +6,8 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  position:relative;
+  /* bottom:0; */
 }
 
 footer a {
@@ -13,3 +15,4 @@ footer a {
   padding: 30px;
   color: black;
 }
+

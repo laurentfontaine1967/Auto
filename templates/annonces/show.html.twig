@@ -4,55 +4,30 @@
 {% endblock %}
 
 {% block body %}
-	<body style="height:95vh">
-		<div class="container mt-5" style="height:80%">
-			<h1 style="font-size:25px">Détail du produit</h1>
 
-			<table class="table">
-				<tbody>
-
-					<tr>
-						<th>Titre</th>
-						<td>{{ annonce.title }}</td>
-					</tr>
-					<tr>
-						<th>Description Sommaire</th>
-						<td>{{ annonce.descriptionsimple }}</td>
-					</tr>
-
-
-					<tr>
-						<th>détail</th>
-						<td>{{ annonce.content |raw}}</td>
-					</tr>
-					<tr>
-						<th>Prix</th>
-						<td>{{ annonce.price }}</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<div class="container mt-2">
+	{# grid #}
+	<div class="container mt-4">
+		<h2 class="mt-3">Détail du produit</h2>
+		<div class="row">
+			<div class="col-sm">
 				{% for image in annonce.images %}
-
-					<img src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="300">
-
+					<img class="card-img-top mb-3" src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="180" alt="Card image cap">
+				{% endfor %}
+			</div>
+			<div class="col-sm">
+				<h5 class="card-title">{{ annonce.title }}/h5>
+					<p class="card-text">{{ annonce.content |raw}}</p>
+					<p class="card-text">{{ annonce.price }}
+						€</p>
+					<a class="btn btn-primary mt-3" href="{{ path('annonces_index') }}">retour a la liste des produits</a>
 				</div>
 
-
-			{% endfor %}
-			<div class="container mt-2">
-
-
-				{% if app.user %}
-					{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-						<a class="btn btn-warning" href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
-
-						{{ include('annonces/_delete_form.html.twig') }}
-					{% endif %}
-				{% endif %}
-				<a class="btn btn-primary mt-3" href="{{ path('annonces_index') }}">retour a la liste des produits</a>
 			</div>
+
 		</div>
-	</body>
+	</div>
+
+	{# grid #}
+
+
 {% endblock %}

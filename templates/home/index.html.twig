@@ -5,66 +5,61 @@
 {% endblock %}
 
 {% block body %}
+	<link rel="stylesheet" href="{{ asset('css/all.css') }}">
 
-	<body style="height:90vh">
-		<div class="container mt-3" style="height:90%;background-color">
-			<div class="row">
-				<div class="col-md-6">
-					<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-						<div class="carousel-inner">
-							<div class="carousel-item active" style="width:200px;height:100px">
-								<img src="{{ asset('images/prez.jpeg') }} " style="width:80%" alt="presentation">
-							</div>
+	<div class="container pt-5">
+		<div class="row">
+			<div class="col">
+
+				<img src="{{ asset('images/1812.jpg') }}" style="width:95%" class="align-center" alt="presentation">
 
 
-							<div class="carousel-item ">
-								<img src="{{ asset('images/prez.jpeg') }}" style="width:80%" alt="presentation">
-							</div>
-
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/prez.jpeg') }}" style="width:80%" alt="presentation">
-							</div>
-
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/prez.jpeg') }}" style="width:80%" alt="presentation">
-							</div>
-
-
-						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
-				</div>
-
-				<div class="col-md-6 pt-2">
-					présentation 1
-
-
-				</div>
 			</div>
 
 
-			<div class="row">
-				<div class="col-md-6 pt-2">
-					Présentation 2
-				</div>
-				<div class="col-md-6 pt-2">
-					Présentation 3
-				</div>
+			<div class="col">
+				<h3 style="text-align:center;" class="mt-5">
+					Nous  sommes spécialisés dans la préparation de moteurs 4 temps turbo ou atmosphérique, et la mise au point via les calculateurs programmables.</h3>
+				<h3 style="text-align:center;" class="mt-5">
+					Nous travaillons principalement avec les calculateurs Maxxecu étant revendeur officiel.</h3>
 
 
 			</div>
 		</div>
 
 
-	</body>
+		<div class="row mt-4 mb-4">
+			<div class="col">
+				<div class="d-flex flex-column mt-2">
+					<h4 style="text-align:center;">
+						Retrouvez notre actualité sur facebook</h4>
+					<h4 style="text-align:center;">
+						C'est parti!</h4>
+					<a style="text-align:center;color:white" href="http://www.facebook.com/search/top?q=gforce%20racing" target="_blank">
+						<i style="font-size:80px;" class="fa-brands fa-facebook"></i>
+					</a>
+				</div>
+
+				<div class="d-flex flex-column mt-5">
+					<h4 style="text-align:center;">
+						Pour toute demande de devis, et d'informations</h4>
+					<h4 style="text-align:center;">
+						Contactez-nous par mail</h4>
+					<a style="border: 1px solid white;text-decoration:none;color:white;width:30%;text-align:center;margin: 0 auto;padding:5px;background-color:black;color:white;border-radius:10px;" href="{{ path('contact') }}">
+						Ecrire un mail de contact
+					</a>
+
+				</div>
+
+			</div>
+			<div class="col">
+				<img class="center-block" src="{{ asset('images/moteur.jpg') }}" style="width:75%" alt="presentation">
+
+			</div>
+
+
+		</div>
+	</div>
+
 
 {% endblock %}

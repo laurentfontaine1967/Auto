@@ -4,60 +4,50 @@
 {% endblock %}
 
 {% block body %}
-	<link rel="stylesheet" href="{{ asset('css/all.css') }}">
-	<body style="height:100vh">
-		<div class="container mt-1" style="height:100%">
-			<h1 style="font-size:25px" class="pt-3">Liste de nos Produits</h1>
-			{{ knp_pagination_render(annonces) }}
-			<table class="table mt-4">
-				<thead>
-					<tr>
-
-						<th>Titre</th>
-						<th class="text-center">description sommaire</th>
-						<th class="text-center">photo
-						</th>
-						<th>Prix(€)</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for annonce in annonces %}
-						<tr>
-
-							<td class="align-middle">{{ annonce.title }}</td>
-							<td class="align-middle">{{ annonce.descriptionsimple }}</td>
-							{% for image in annonce.images %}
-
-								<td>
-									<img src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="100"></td>
+	<body style="height:100%">
+		<link rel="stylesheet" href="{{ asset('css/all.css') }}">
+		<div class="container">
+			<div class="container mt-3">
+				<h1 style="font-size:25px">Liste de nos Produits</h1>
+			</div>
+			<div class="pt-3">
+				{{ knp_pagination_render(annonces) }}
+			</div>
+			{# div class card #}
 
 
-							{% endfor %}
+			<div
+				class="container d-flex">
+				{# card #}
+				{% for annonce in annonces %}
+					<div class="card mx-3" style="width: 18rem;">
+						{% for image in annonce.images %}
+							<img class="card-img-top" src="{{ asset('/uploads/' ~ image.name) }}" alt="photo_produit" width="100">
+						{% endfor %}
 
-							<td class="align-middle">{{ annonce.price }}</td>
-							<td class="align-middle">
-								<a class="btn btn-primary btn-sm mx-2" href="{{ path('annonces_show', {'id': annonce.id}) }}">Détail</a>
-								{% if app.user %}
-									{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-										<a class=" btn btn-warning btn-sm " href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
-									{% endif %}
+						<div class="card-body">
+							<h5 class="card-title">{{ annonce.title }}</h5>
+							<h6 class="card-title">{{ annonce.descriptionsimple }}</h6>
+							<h6 class="card-title">{{ annonce.price }}</h6>
+
+							<a class="btn btn-primary btn-sm mx-2" href="{{ path('annonces_show', {'id': annonce.id}) }}">Détail</a>
+							{% if app.user %}
+								{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+									<a class=" btn btn-warning btn-sm " href="{{ path('annonces_edit', {'id': annonce.id}) }}">Modifier</a>
 								{% endif %}
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="5">Pas de produits enregistrés</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-			{{ knp_pagination_render(annonces) }}
-			{% if app.user %}
-				{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-					<a class="btn btn-primary mb-1" href="{{ path('annonces_new') }}">ajouter un produit</a>
-				{% endif %}
-			{% endif %}
+							{% endif %}
+
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			{# fin card #}
+
+
+			{# div class card #}
+			<div class="pt-3">
+				{{ knp_pagination_render(annonces) }}
+			</div>
 		</div>
 	</body>
 {% endblock %}
