@@ -23,11 +23,7 @@
 					<a class="nav-link" href="{{ path('annonces_index') }}">Nos produits</a>
 				</li>
 
-				{# <li class="nav-item">
-									<a class="nav-link" href="{{ path('contact') }}">
-										Nous contacter
-									</a>
-								</li> #}
+
 				{% if app.user is same as null %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_login') }}">
@@ -45,11 +41,12 @@
 					</li>
 
 					{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('admin_home') }}">
-								<i class="fas fa-user-cog"></i>
-							</a>
+							<a class=" btn btn-success " href="{{ path("annonces_new") }}">Creer un nouveau produit</a>
+
 						</li>
+
 					{% endif %}
 				{% endif %}
 			</ul>
