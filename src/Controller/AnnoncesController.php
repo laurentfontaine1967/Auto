@@ -114,18 +114,19 @@ class AnnoncesController extends AbstractController
      */
     public function edit(Request $request, Annonces $annonce, EntityManagerInterface $entityManager): Response
     {    
-        
         $user = $this->GetUser();
         if(!$user)
         {
             return $this->redirectToRoute('annonces_index');
         }
 
-        // $UserRole =$user->getRoles();
-        // if($UserRole != "ROLE_ADMIN")
-        // {
-        //     return $this->redirectToRoute('annonces_index');
-        // }
+        $userRole =$user->getRoles();
+       
+        if($userRole[0] != "ROLE_ADMIN")
+        {
+            return $this->redirectToRoute('annonces_index');
+        }
+
    
 
         $form = $this->createForm(AnnoncesType::class, $annonce);
@@ -172,12 +173,13 @@ class AnnoncesController extends AbstractController
             return $this->redirectToRoute('annonces_index');
         }
 
-        $UserRole =$user->getRoles();
-        if($UserRole !== "ROLE-ADMIN")
+        $userRole =$user->getRoles();
+       
+        if($userRole[0] != "ROLE_ADMIN")
         {
             return $this->redirectToRoute('annonces_index');
         }
-
+        
         if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {
             $entityManager->remove($annonce);
             $entityManager->flush();
@@ -190,6 +192,13 @@ class AnnoncesController extends AbstractController
     */
     public function deleteImage(Images $image,Request $request){
        
+        $user = $this->GetUser();
+        if(!$user)
+        {
+            return $this->redirectToRoute('annonces_index');
+        }
+
+
          $nom= $image->getName(); 
            unlink($this->getParameter('images_directory').'/'.$nom);
           $em =$this->getDoctrine()->getManager();

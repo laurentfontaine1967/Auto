@@ -14,7 +14,7 @@
 
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('home') }}">
-						<i class="fas fa-house-user"></i>
+						Acceuil
 					</a>
 				</li>
 
@@ -42,11 +42,15 @@
 
 					{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
 
+
 						<li class="nav-item">
-							<a class=" btn btn-success " href="{{ path("annonces_new") }}">Creer un nouveau produit</a>
+							<a class=" btn btn-success" href="{{ path("annonces_new") }}">Creer un nouveau produit</a>
 
 						</li>
+						<li class="nav-item" style="padding-left:10px">
+							<a class=" btn btn-primary" href="{{ path("pratique") }}">tutos</a>
 
+						</li>
 					{% endif %}
 				{% endif %}
 			</ul>
