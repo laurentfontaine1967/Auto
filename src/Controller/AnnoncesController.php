@@ -51,6 +51,7 @@ class AnnoncesController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->GetUser();
+       $defo="nophoto.jpg";
        
         if(!$user)
         {
@@ -70,7 +71,10 @@ class AnnoncesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
         //on recup les images
+
+        
          $images=$form->get('images')->getData();
+         if ($images !=[]){
          //on boucle les images
          foreach ($images as $image) {
              //on génère un nouveau nom de fichier
@@ -84,9 +88,14 @@ class AnnoncesController extends AbstractController
              $img=new Images();
              $img->setName($fichier);
              $annonce->addImage($img);
-
+            };
          }
-
+            else{
+                $img=new Images();
+                $img->setName($defo);
+                $annonce->addImage($img);
+            }
+// dd($images);
             $entityManager->persist($annonce);
             $entityManager->flush();
 
