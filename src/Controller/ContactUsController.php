@@ -44,7 +44,7 @@ class ContactUsController extends AbstractController
 
             $mailer->send($email);
             $this->addFlash('success', 'Votre email a bien été envoyé.');
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('home');
         }
 
 
