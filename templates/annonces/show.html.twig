@@ -15,19 +15,16 @@
 				{% endfor %}
 			</div>
 			<div class="col-sm">
-				<h5 class="card-title">{{ annonce.title }}/h5>
-					<p class="card-text">{{ annonce.content |raw}}</p>
-					<p class="card-text">{{ annonce.price }}
-						€</p>
-					<a class="btn btn-primary mt-3" href="{{ path('annonces_index') }}">retour a la liste des produits</a>
-				</div>
-
+				<h5 class="card-title">{{ annonce.title }}</h5>
+				<p class="card-text">{{ annonce.content |raw}}</p>
+				<p class="card-text">{{ annonce.price }}
+					€</p>
+				<a class="btn btn-primary mt-3" href="{{ path('annonces_index') }}">retour a la liste des produits</a>
 			</div>
 
 		</div>
+
 	</div>
+</div>
 
-	{# grid #}
-
-
-{% endblock %}
+{# grid #}{% endblock %}
